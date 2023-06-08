@@ -3,12 +3,17 @@ import Banner from '../Banner/Banner';
 import PopularClass from '../PopularClass/PopularClass';
 import PopularInstructors from '../PopularInstructors/PopularInstructors';
 import Gallery from '../Gallery/Gallery';
+import { useLoaderData } from 'react-router-dom';
 
 const Home = () => {
+    const allClasses = useLoaderData();
+    
     return (
         <div>
             <Banner></Banner>
-            <PopularClass></PopularClass>
+            <PopularClass 
+            allClasses= {allClasses}
+            ></PopularClass>
             <PopularInstructors></PopularInstructors>
             <Gallery></Gallery>
         </div>

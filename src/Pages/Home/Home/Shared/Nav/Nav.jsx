@@ -5,7 +5,7 @@ import { AuthContext } from '../../../../../Providers/AuthProviders';
 const Nav = () => {
 
     const { user, logOut } = useContext(AuthContext);
-    
+
     const handleLogOut = () => {
         logOut()
             .then(result => {
@@ -22,36 +22,6 @@ const Nav = () => {
         <li><Link to="/instructors">Instructors</Link></li>
         <li><Link to="/classes">Classes</Link></li>
         <li><Link to="/dashboard">Dashboard</Link></li>
-        {user &&
-
-            <span className="d-inline-block">
-
-
-
-                <img className='mt-2' disabled style={{ fontSize: '2rem', pointerEvents: 'none', height: '40px', borderRadius: '50px', width: '40px' }} src={user.photoURL} alt="img" />
-
-
-            </span>
-        }
-
-
-        {
-            user ?
-
-                <button onClick={handleLogOut} className="btn btn-error mx-3">LogOut</button> :
-                <Link to="/login">
-                    <button className="btn btn-primary mx-3">Login</button>
-                </Link>
-        }
-
-        {
-            user ?
-                <></> :
-                <Link to="/signup">
-                    <button className="btn btn-accent">Register</button>
-
-                </Link>
-        }
 
 
     </>
@@ -74,7 +44,41 @@ const Nav = () => {
                         {navOptions}
                     </ul>
                 </div>
-               
+
+                <div className='navbar-end'>
+                    {user &&
+
+                        <span className="d-inline-block">
+
+
+
+                            <img className='mt-2' disabled style={{ fontSize: '2rem', pointerEvents: 'none', height: '40px', borderRadius: '50px', width: '40px' }} src={user.photoURL} alt="img" />
+
+
+                        </span>
+                    }
+
+
+                    {
+                        user ?
+
+                            <button onClick={handleLogOut} className="btn btn-error mx-3">LogOut</button> :
+                            <Link to="/login">
+                                <button className="btn btn-primary mx-3">Login</button>
+                            </Link>
+                    }
+
+                    {
+                        user ?
+                            <></> :
+                            <Link to="/signup">
+                                <button className="btn btn-accent">Register</button>
+
+                            </Link>
+                    }
+
+                </div>
+
             </div>
         </>
     );
