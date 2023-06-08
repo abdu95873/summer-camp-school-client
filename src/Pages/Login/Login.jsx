@@ -3,22 +3,31 @@ import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { useForm } from 'react-hook-form';
+
 
 const Login = () => {
 
     const { signIn, googleLogin } = useContext(AuthContext);
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 
 
-    const handleLogin = event => {
-        event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.email.value;
+    const handleLogin = data => {
+        // event.preventDefault();
+        // const form = event.target;
+        // const email = form.email.value;
+        // const password = form.email.value;
+        // console.log(email, password);
+
+       
+        const email = data.email;
+        const password = data.password;
         console.log(email, password);
+
 
         signIn(email, password)
             .then(result => {
@@ -88,49 +97,58 @@ const Login = () => {
 
 
     return (
+        <>
+        
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">
-
+                <div className="text-center lg:text-left">
+                    <h1 className="text-5xl font-bold">Login now!</h1>
+                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <form onSubmit={handleLogin} className="card-body">
+                    <form onSubmit={handleSubmit(handleLogin)} className="card-body">
+                        
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="text" name="email" placeholder="email" className="input input-bordered" />
+                            <input type="email"  {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" />
+                            {errors.email && <span className="text-red-600">Email is required</span>}
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-
-                            {/* todo : add hide and show button */}
-
-                            <input type="text" name="password" placeholder="password" className="input input-bordered" />
+                            <input type="password"  {...register("password", {
+                                required: true,
+                                minLength: 6,
+                                maxLength: 20,
+                                pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                            })} placeholder="password" className="input input-bordered" />
+                            {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
+                            {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
+                            {errors.password?.type === 'maxLength' && <p className="text-red-600">Password must be less than 20 characters</p>}
+                            {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
                         </div>
                         <div className="form-control mt-6">
-
-                            <input className="btn btn-primary" type="submit" value="Login"></input>
+                            <input className="btn btn-primary" type="submit" value="Login" />
                         </div>
                     </form>
-                    <p className="my-4 text-center">
-                        New to Kid Toys! <Link to="/signup" className="text-red-600 my-4 text-center">SignUp</Link>
-                    </p>
-
+                    <p className="text-center"><small>Already have an account <Link className="text-red-600" to="/login">Login</Link></small></p>
                     <div className="flex justify-center items-center my-5 space-x-1">
-                        <h5>Login with ....   </h5> 
+                        <h5 className="">Login with ....   </h5> 
                         
 
                         <button className='btn btn-circle' onClick={handleGoogleLogin}>G</button>
                     </div>
-
-
+                    
                 </div>
             </div>
         </div>
+    </>
     );
 };
 

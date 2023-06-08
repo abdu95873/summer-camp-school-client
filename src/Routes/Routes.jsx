@@ -19,6 +19,7 @@ import EnrolledClasses from "../Pages/DashboardPages/UserDashboardPages/Enrolled
 import PaymentHistory from "../Pages/DashboardPages/UserDashboardPages/PaymentHistory";
 import SelectedClasses from "../Pages/DashboardPages/UserDashboardPages/SelectedClasses";
 import UserHome from "../Pages/DashboardPages/UserDashboardPages/UserHome";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 
 export const router = createBrowserRouter([
@@ -95,5 +96,9 @@ export const router = createBrowserRouter([
       },
     ]
 
+  },
+  {
+    path: "/*",
+    element: <ErrorPage></ErrorPage>
   },
 ]);
