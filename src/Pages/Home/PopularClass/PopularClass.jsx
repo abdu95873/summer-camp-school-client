@@ -17,21 +17,24 @@ const PopularClass = ({ allClasses }) => {
 
                         <div className="card w-96 bg-base-100 shadow-xl my-4">
                             <figure className="px-10 pt-10">
-                                <img src={classes?.pictureUrl} className="rounded-xl" />
+                                <img src={classes?.photo} className="rounded-xl" />
                             </figure>
                             <div className="card-body items-center text-center">
-                                <h2 className="card-title">{classes?.toyName}</h2>
-                                <p>Price:{classes?.price} </p>
+                                <p>Instructor Name:{classes?.instructorName}</p>
+
+                                <p>Class: {classes?.name} </p>
+                                <p>Available Seats: {classes?.availablesseats} </p>
 
 
-                            </div>
+
                         </div>
+                    </div >
 
 
 
                     </>)
                 }
-            </div>
+        </div >
         </>
     );
 };

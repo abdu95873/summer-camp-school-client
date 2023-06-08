@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link,useLocation,useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProviders';
 import Swal from 'sweetalert2';
 import axios from 'axios';
@@ -11,9 +11,12 @@ import { useForm } from 'react-hook-form';
 const SignUp = () => {
 
 
-    const { createUser, userUpdate, googleLogin } = useContext(AuthContext);
-    const { register, handleSubmit, reset,watch, formState: { errors } } = useForm();
+    const { createUser, googleLogin } = useContext(AuthContext);
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
 
     const handleSignUp = data => {
 
@@ -53,7 +56,7 @@ const SignUp = () => {
             .then(result => {
                 const loggedInUser = result.user;
                 console.log(loggedInUser);
-                navigate(from, { replace: true });
+                navigate(from, { replace: true } );
                 saveUsers(result.user);
             })
             .catch(error => {
@@ -67,7 +70,8 @@ const SignUp = () => {
 
 
 
-    const saveUsers = (user) => {
+    const saveUsers = (data) => {
+
         fetch(`http://localhost:5000/users?email=${data.email}`)
             .then(res => res.json())
             .then(users => {
@@ -77,9 +81,10 @@ const SignUp = () => {
                 }
                 if (users.length < 1) {
                     const user = {
-                        name: user.displayName,
-                        email: user.email,
-                        photo: user.photoURL,
+                        name: data.name,
+                        email: data.email,
+                        password: data.password,
+                        photo: data.photo,
                         role: 'student'
                     };
                     axios.post('http://localhost:5000/user', user, {
@@ -104,8 +109,7 @@ const SignUp = () => {
                         });
                 }
             })
-    };
-
+    }
 
 
     return (

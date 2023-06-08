@@ -2,8 +2,8 @@ import React from 'react';
 import Banner from '../Banner/Banner';
 import PopularClass from '../PopularClass/PopularClass';
 import PopularInstructors from '../PopularInstructors/PopularInstructors';
-import Gallery from '../Gallery/Gallery';
 import { useLoaderData } from 'react-router-dom';
+import MarqueeSection from '../MarqueeSection/MarqueeSection';
 
 const Home = () => {
     const allClasses = useLoaderData();
@@ -15,7 +15,7 @@ const Home = () => {
             allClasses= {allClasses}
             ></PopularClass>
             <PopularInstructors></PopularInstructors>
-            <Gallery></Gallery>
+            <MarqueeSection></MarqueeSection>
         </div>
     );
 };

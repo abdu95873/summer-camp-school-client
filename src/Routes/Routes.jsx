@@ -20,6 +20,7 @@ import PaymentHistory from "../Pages/DashboardPages/UserDashboardPages/PaymentHi
 import SelectedClasses from "../Pages/DashboardPages/UserDashboardPages/SelectedClasses";
 import UserHome from "../Pages/DashboardPages/UserDashboardPages/UserHome";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import PopularInstructors from "../Pages/Home/PopularInstructors/PopularInstructors";
 
 
 export const router = createBrowserRouter([
@@ -30,7 +31,8 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/classes')
+        loader: () => fetch('http://localhost:5000/classes'),
+        
       },
       {
         path: "/signup",
@@ -42,11 +44,13 @@ export const router = createBrowserRouter([
       },
       {
         path: "/instructors",
-        element: <Instructors></Instructors>,
+        element: <PopularInstructors></PopularInstructors>,
+        loader: () => fetch('http://localhost:5000/users')
       },
       {
         path: "/classes",
         element: <Classes></Classes>,
+        loader: () => fetch('http://localhost:5000/classes'),
       },
      
     ]
