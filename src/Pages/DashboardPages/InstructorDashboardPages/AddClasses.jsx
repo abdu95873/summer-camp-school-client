@@ -25,7 +25,7 @@ const AddClasses = () => {
             name, photo, availablesseats, price, instructorName, instructorEmail, status: 'pending', feedback: ''
         }
 
-        axios.post('http://localhost:5000/class', body, {
+        axios.post('https://summer-camp-school-server-pi.vercel.app/class', body, {
             headers: {
               'Content-Type': 'application/json'
             }

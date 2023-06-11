@@ -8,7 +8,7 @@ const EnrolledClasses = () => {
     const { data: allClasses = [] } = useQuery({
         queryKey: ['classes'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/selected-classes?email=${user?.email}`);
+            const res = await fetch(`https://summer-camp-school-server-pi.vercel.app/selected-classes?email=${user?.email}`);
             const data = await res.json();
             return data;
         }

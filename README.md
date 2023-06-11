@@ -1,4 +1,25 @@
+Website name: MUSIC HUB
+
 Live Link: https://toy-marketplace-client-512a4.web.app/
+
+
+use package: 
+
+"firebase"
+"jsonwebtoken"
+"localforage"
+match-sorter
+"react"
+react-dom
+react-fast-marquee
+react-hook-form
+react-icons
+react-query
+react-responsive-carousel
+react-router-dom
+react-spring
+sort-by
+"sweetalert2"
 
 
 5 bullet point :
@@ -15,3 +36,6 @@ Live Link: https://toy-marketplace-client-512a4.web.app/
 5. Blog page: This page features blog posts related to toys or relevant topics. Both logged-in and non-logged-in users can access and read the blog posts, allowing them to stay informed or engage with the content by leaving comments or sharing posts on social media.
 
 Overall, the website ensures user authentication for restricted pages, provides an all toy page for browsing, offers a personalized "My Toy" page for authenticated users to manage their toy collection, and includes a blog page to share informative content with users.
+
+
+

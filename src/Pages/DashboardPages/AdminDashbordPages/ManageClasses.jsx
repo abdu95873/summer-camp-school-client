@@ -9,14 +9,14 @@ const ManageClasses = () => {
     const { data: classes = [], refetch } = useQuery({
         queryKey: ['classes'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/classes`);
+            const res = await fetch(`https://summer-camp-school-server-pi.vercel.app/classes`);
             const data = await res.json();
             return data;
         }
     });
 
     useEffect(() => {
-        fetch(`http://localhost:5000/manage-class`, {
+        fetch(`https://summer-camp-school-server-pi.vercel.app/manage-class`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

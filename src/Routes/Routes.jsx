@@ -34,7 +34,7 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/all-data'),
+        loader: () => fetch('https://summer-camp-school-server-pi.vercel.app/all-data'),
         
       },
       {
@@ -48,12 +48,12 @@ export const router = createBrowserRouter([
       {
         path: "/instructors",
         element: <Instructors></Instructors>,
-        loader: () => fetch('http://localhost:5000/users')
+        loader: () => fetch('https://summer-camp-school-server-pi.vercel.app/users')
       },
       {
         path: "/classes",
         element: <Classes></Classes>,
-        loader: () => fetch('http://localhost:5000/classes'),
+        loader: () => fetch('https://summer-camp-school-server-pi.vercel.app/classes'),
       },
      
     ]

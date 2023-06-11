@@ -10,7 +10,7 @@ const MyClasses = () => {
     const { data: allClasses = [], refetch } = useQuery({
         queryKey: ['allClasses'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/classes?instructorEmail=${user?.email}`);
+            const res = await fetch(`https://summer-camp-school-server-pi.vercel.app/classes?instructorEmail=${user?.email}`);
             const data = await res.json();
             return data;
         }

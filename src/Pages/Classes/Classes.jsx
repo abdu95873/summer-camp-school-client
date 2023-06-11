@@ -1,17 +1,36 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
+
+import { useQuery } from 'react-query';
 import { AuthContext } from '../../Providers/AuthProviders';
 
 const Classes = () => {
     const {user} = useContext(AuthContext);
     const allClasses = useLoaderData();
 
+    const { data: loggedUser = [], refetch } = useQuery({
+        queryKey: ['user'],
+        queryFn: async () => {
+            const res = await fetch(`https://summer-camp-school-server-pi.vercel.app/users?email=${user?.email}`);
+            const data = await res.json();
+            return data;
+        }
+    });
+    useEffect(() => {
+        refetch()
+    }, [user])
+
+    console.log(loggedUser);
+    
+    const isAdmin = loggedUser[0]?.role == 'admin';
+    const isInstructor = loggedUser[0]?.role == 'instructor';
+
     const handleAddClass = classId => {
         const body = {
             classID: classId,
             query: user.email
         }
-        fetch(`http://localhost:5000/select-class`, {
+        fetch(`https://summer-camp-school-server-pi.vercel.app/select-class`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -26,8 +45,7 @@ const Classes = () => {
                 }
             })
     }
-    const userRole = user ? user.role : '';
-    console.log(userRole);
+    
 
     return (
         <div className='pt-24'>
@@ -50,7 +68,7 @@ const Classes = () => {
                             <p>Instructor name: {classes?.instructorName} </p>
                             <p>Available seats: {classes?.availablesseats} </p>
                             <p>Price:{classes?.price} </p>
-                            <button onClick={()=> handleAddClass(classes?._id)} className="btn btn-primary"disabled={classes?.availablesseats == 0 || user?.role === 'admin' || user?.role === 'instructor'}>Add Class</button>
+                            <button onClick={()=> handleAddClass(classes?._id)} className="btn btn-primary"disabled={classes?.availablesseats == 0 || loggedUser[0]?.role === 'admin' || loggedUser[0]?.role === 'instructor'}>Add Class</button>
 
                             
 

@@ -56,7 +56,7 @@ const Login = () => {
 
     const saveUsers = (data) => {
 
-        fetch(`http://localhost:5000/users?email=${data.email}`)
+        fetch(`https://summer-camp-school-server-pi.vercel.app/users?email=${data.email}`)
             .then(res => res.json())
             .then(users => {
                 if (users.length > 0) {
@@ -72,7 +72,7 @@ const Login = () => {
                         selectedClass: [],
                         enrolledClass: []
                     };
-                    axios.post('http://localhost:5000/user', user, {
+                    axios.post('https://summer-camp-school-server-pi.vercel.app/user', user, {
                         headers: {
                             'Content-Type': 'application/json'
                         }
