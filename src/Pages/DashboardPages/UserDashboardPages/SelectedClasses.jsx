@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { AuthContext } from '../../../Providers/AuthProviders';
 import { useQuery } from 'react-query';
+import { Link } from 'react-router-dom';
 
 const SelectedClasses = () => {
     const {user} = useContext(AuthContext);
@@ -19,6 +20,7 @@ const SelectedClasses = () => {
     console.log(allClasses)
     return (
         <div>
+        <Link to="/dashboard/payment"><button className="btn btn-warning">Pay</button></Link>
                         {
                 allClasses?.map(classes => <>
 
