@@ -3,9 +3,12 @@ import { AuthContext } from "../../../Providers/AuthProviders";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { useQuery } from "react-query";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const AddClasses = () => {
     const {user} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
 
 
     const handleAddClass = event => {
@@ -32,7 +35,7 @@ const AddClasses = () => {
                   Swal.fire({
                       position: 'top-end',
                       icon: 'success',
-                      title: 'Your work has been saved',
+                      title: 'Your class has been saved',
                       showConfirmButton: false,
                       timer: 1500
                     })

@@ -17,7 +17,6 @@ const SelectedClasses = () => {
         refetch();
     },[user])
 
-    console.log(allClasses)
     return (
         <div>
         <Link to="/dashboard/payment"><button className="btn btn-warning">Pay</button></Link>

@@ -22,7 +22,8 @@ import UserHome from "../Pages/DashboardPages/UserDashboardPages/UserHome";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Instructors from "../Pages/Instructors/Instructors";
 import PrivateRoute from "../Routes/PrivateRoute";
-import Payment from "../Pages/DashboardPages/UserDashboardPages/Payment/Payment";
+import Payment from "../Pages/DashboardPages/UserDashboardPages/Payment";
+
 
 
 export const router = createBrowserRouter([

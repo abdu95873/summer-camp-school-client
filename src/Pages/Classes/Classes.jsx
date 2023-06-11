@@ -26,6 +26,8 @@ const Classes = () => {
                 }
             })
     }
+    const userRole = user ? user.role : '';
+    console.log(userRole);
 
     return (
         <div className='pt-24'>
@@ -39,7 +41,7 @@ const Classes = () => {
                 allClasses?.map(classes => <>
 
 
-                    <div className="card w-96 bg-base-100 shadow-xl my-4">
+                    <div className={`card w-96 bg-base-100 shadow-xl my-4 ${classes?.availablesseats == 0 ? 'bg-red-500' : ''}`}>
                         <figure className="px-10 pt-10">
                             <img src={classes?.photo} className="rounded-xl" />
                         </figure>
@@ -48,7 +50,9 @@ const Classes = () => {
                             <p>Instructor name: {classes?.instructorName} </p>
                             <p>Available seats: {classes?.availablesseats} </p>
                             <p>Price:{classes?.price} </p>
-                            <button onClick={()=> handleAddClass(classes?._id)} className="btn btn-primary">Add Class</button>
+                            <button onClick={()=> handleAddClass(classes?._id)} className="btn btn-primary"disabled={classes?.availablesseats == 0 || user?.role === 'admin' || user?.role === 'instructor'}>Add Class</button>
+
+                            
 
 
 
