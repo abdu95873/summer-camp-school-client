@@ -63,6 +63,7 @@ const ManageClasses = () => {
             <table className="table">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>Photo</th>
                         <th>Name</th>
                         <th>Instructor name</th>
@@ -75,9 +76,10 @@ const ManageClasses = () => {
                 </thead>
                 <tbody>
                     {
-                        classes?.map(item => <>
-                            <tr className="bg-base-200">
-                                <td><img className='h-16' src={item?.photo} alt="" /></td>
+                        classes?.map((item, index) => <>
+                            <tr className="bg-base-200 border-t-2">
+                                <td>{index + 1}</td>
+                                <td><img className='h-16 w-16' src={item?.photo} alt="" /></td>
                                 <td>{item?.name}</td>
                                 <td>{item?.instructorName}</td>
                                 <td>{item?.instructorEmail}</td>

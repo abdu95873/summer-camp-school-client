@@ -66,7 +66,9 @@ const Login = () => {
                         name: data.displayName,
                         email: data.email,
                         photo: data.photoURL,
-                        role: 'student'
+                        role: 'student',
+                        selectedClass: [],
+                        enrolledClass: []
                     };
                     axios.post('http://localhost:5000/user', user, {
                         headers: {

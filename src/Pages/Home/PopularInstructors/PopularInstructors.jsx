@@ -1,8 +1,7 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 
-const PopularInstructors = () => {
-    const allInstructors = useLoaderData();
+const PopularInstructors = ({allInstructors}) => {
     return (
         <div className='pt-24'>
         <section>

@@ -85,7 +85,9 @@ const SignUp = () => {
                         email: data.email,
                         password: data.password,
                         photo: data.photo,
-                        role: 'student'
+                        role: 'student',
+                        selectedClass: [],
+                        enrolledClass: []
                     };
                     axios.post('http://localhost:5000/user', user, {
                         headers: {

@@ -1,8 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProviders';
 
 const Classes = () => {
+    const {user} = useContext(AuthContext);
     const allClasses = useLoaderData();
+
+    const handleAddClass = classId => {
+        const body = {
+            classID: classId,
+            query: user.email
+        }
+        fetch(`http://localhost:5000/select-class`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount > 0) {
+                    alert('Class added');
+                }
+            })
+    }
+
     return (
         <div className='pt-24'>
         <section >
@@ -24,7 +48,7 @@ const Classes = () => {
                             <p>Instructor name: {classes?.instructorName} </p>
                             <p>Available seats: {classes?.availablesseats} </p>
                             <p>Price:{classes?.price} </p>
-                            <button className="btn btn-primary">Add Class</button>
+                            <button onClick={()=> handleAddClass(classes?._id)} className="btn btn-primary">Add Class</button>
 
 
 

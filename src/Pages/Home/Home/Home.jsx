@@ -6,15 +6,15 @@ import { useLoaderData } from 'react-router-dom';
 import MarqueeSection from '../MarqueeSection/MarqueeSection';
 
 const Home = () => {
-    const allClasses = useLoaderData();
+    const allData = useLoaderData();
+    const allClasses = allData?.classes;
+    const allInstructors = allData?.users;
     
     return (
         <div>
             <Banner></Banner>
-            <PopularClass 
-            allClasses= {allClasses}
-            ></PopularClass>
-            <PopularInstructors></PopularInstructors>
+            <PopularClass allClasses= {allClasses}></PopularClass>
+            <PopularInstructors allInstructors={allInstructors}></PopularInstructors>
             <MarqueeSection></MarqueeSection>
         </div>
     );
