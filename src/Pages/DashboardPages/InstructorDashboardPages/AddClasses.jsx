@@ -1,7 +1,8 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { useQuery } from "react-query";
 
 const AddClasses = () => {
     const {user} = useContext(AuthContext);
@@ -43,44 +44,43 @@ const AddClasses = () => {
 
 
     }
+   
 
     return (
-        <form onSubmit={handleAddClass} className="card-body">
+       
+          <form onSubmit={handleAddClass} className="card-body">
             <div className="form-control">
-                <label className="label">
-                    <span className="label-text"> Class Name</span>
-                </label>
-                <input type="text" name="name" placeholder="classname" className="input input-bordered" />
+              <label className="label">
+                <span className="label-text">Class Name</span>
+              </label>
+              <input type="text" name="name" placeholder="classname" className="input input-bordered" />
             </div>
             <div className="form-control">
-                <label className="label">
-                    <span className="label-text">Photo URL</span>
-                </label>
-                <input type="text" name="photo" placeholder="photo" className="input input-bordered" />
+              <label className="label">
+                <span className="label-text">Photo URL</span>
+              </label>
+              <input type="text" name="photo" placeholder="photo" className="input input-bordered" />
             </div>
             <div className="form-control">
-                <label className="label">
-                    <span className="label-text">Available seats</span>
-                </label>
-                <input type="number" name="availablesseats" placeholder="Available seats" className="input input-bordered" />
+              <label className="label">
+                <span className="label-text">Available Seats</span>
+              </label>
+              <input type="number" name="availableSeats" placeholder="Available seats" className="input input-bordered" />
             </div>
             <div className="form-control">
-                <label className="label">
-                    <span className="label-text">price</span>
-                </label>
-                <input type="number" name="price" placeholder="price" className="input input-bordered" />
-                <label className="label">
-                   
-                </label>
+              <label className="label">
+                <span className="label-text">Price</span>
+              </label>
+              <input type="number" name="price" placeholder="price" className="input input-bordered" />
             </div>
-
+  
             {/* todo: add confirm pass */}
             <div className="form-control mt-6">
-
-                <input className="btn btn-primary" type="submit" value="Add class"></input>
+              <input className="btn btn-primary" type="submit" value="Add class" />
             </div>
-        </form>
-    );
-};
+          </form>
+        
+    )
+  };
 
 export default AddClasses;

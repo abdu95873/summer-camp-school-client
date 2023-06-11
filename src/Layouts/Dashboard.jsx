@@ -11,7 +11,6 @@ const Dashboard = () => {
     const AnimatedFaHome = animated(FaHome);
     const AnimatedFaUtensils = animated(FaUtensils);
     const AnimatedFaWallet = animated(FaWallet);
-    const AnimatedFaCalendarAlt = animated(FaCalendarAlt);
     const AnimatedFaShoppingCart = animated(FaShoppingCart);
     const AnimatedFaUsers = animated(FaUsers);
     const AnimatedFaLanguage = animated(FaLanguage);

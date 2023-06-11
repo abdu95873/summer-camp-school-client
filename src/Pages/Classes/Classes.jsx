@@ -30,7 +30,7 @@ const Classes = () => {
     return (
         <div className='pt-24'>
         <section >
-            <header className='text-4xl font-bold text-center'>Popular Class</header>
+            <header className='text-4xl font-bold text-center'>All Classes</header>
             <div className="divider"></div>
         </section>
         <div className="grid lg:grid-cols-3 md:grid-cols-3 justify-between my-8">

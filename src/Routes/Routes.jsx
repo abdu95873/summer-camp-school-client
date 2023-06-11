@@ -6,7 +6,7 @@ import Main from "../Layouts/Main";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
-import Instructors from "../Pages/Instructors/Instructors";
+
 import Classes from "../Pages/Classes/Classes";
 import Dashboard from "../Layouts/Dashboard";
 import AdminHome from "../Pages/DashboardPages/AdminDashbordPages/AdminHome";
@@ -20,7 +20,8 @@ import PaymentHistory from "../Pages/DashboardPages/UserDashboardPages/PaymentHi
 import SelectedClasses from "../Pages/DashboardPages/UserDashboardPages/SelectedClasses";
 import UserHome from "../Pages/DashboardPages/UserDashboardPages/UserHome";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
-import PopularInstructors from "../Pages/Home/PopularInstructors/PopularInstructors";
+import Instructors from "../Pages/Instructors/Instructors";
+import PrivateRoute from "../Routes/PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -44,7 +45,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/instructors",
-        element: <PopularInstructors></PopularInstructors>,
+        element: <Instructors></Instructors>,
         loader: () => fetch('http://localhost:5000/users')
       },
       {
@@ -62,6 +63,7 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/adminhome",
         element:<AdminHome></AdminHome>,
+        
       },
       {
         path: "/dashboard/manageclasses",
@@ -73,7 +75,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/addclasses",
-        element: <AddClasses></AddClasses>
+        element: <PrivateRoute><AddClasses></AddClasses></PrivateRoute>
       },
       {
         path: "/dashboard/instructorhome",
@@ -82,7 +84,6 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/myclasses",
         element: <MyClasses></MyClasses>,
-        loader: () => fetch('http://localhost:5000/classes'),
       },
       {
         path: "/dashboard/enrolledclasses",
