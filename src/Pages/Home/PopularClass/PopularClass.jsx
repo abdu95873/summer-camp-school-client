@@ -6,19 +6,20 @@ const PopularClass = ({ allClasses }) => {
     return (
         <>
             <section>
-                <header className='text-4xl font-bold text-center'>Popular Class</header>
+                <header className='text-4xl font-bold text-center py-5'>Popular Class</header>
                 <div className="divider"></div>
             </section>
-            <div className="grid lg:grid-cols-3 md:grid-cols-3 justify-between my-8">
+            <div className="grid lg:grid-cols-3 md:grid-cols-3 justify-center md:justify-between my-8 md:gap-16">
 
                 {
                     sixClasses?.map(classes => <>
 
 
-                        <div className="card w-96 bg-base-100 shadow-xl my-4">
+                        <div className="card w-80 bg-base-100 shadow-xl my-4 mx-auto">
                             <figure className="px-10 pt-10">
-                                <img src={classes?.photo} className="rounded-xl" />
+                                <img src={classes?.photo} className="rounded-xl" style={{ width: '200px', height: '200px' }} />
                             </figure>
+
                             <div className="card-body items-center text-center">
                                 <p>Instructor Name:{classes?.instructorName}</p>
 
@@ -27,14 +28,14 @@ const PopularClass = ({ allClasses }) => {
 
 
 
-                        </div>
-                    </div >
+                            </div>
+                        </div >
 
 
 
                     </>)
                 }
-        </div >
+            </div >
         </>
     );
 };

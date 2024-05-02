@@ -33,7 +33,8 @@ const Dashboard = () => {
     });
     useEffect(() => {
         refetch()
-    }, [user])
+    }, [user]);
+    
     const isStudent = loggedUser[0]?.role == 'student';
     const isAdmin = loggedUser[0]?.role == 'admin';
     const isInstructor = loggedUser[0]?.role == 'instructor';

@@ -12,13 +12,13 @@ const Instructors = () => {
             </section>
 
 
-            <div className="grid lg:grid-cols-3 md:grid-cols-3 justify-between my-8">
+            <div className="grid lg:grid-cols-3 md:grid-cols-3 justify-center md:justify-between my-8 md:gap-x-16">
 
                 {
                     sixInstructors?.map(instructors => <>
 
 
-                        <div className="card w-96 bg-base-100 shadow-xl my-4">
+                        <div className="card w-80 bg-base-100 shadow-xl my-4 mx-auto">
                             <figure className="px-10 pt-10">
                                 <img  src={instructors?.photo} alt='Image' className="rounded-xl h-24" />
                             </figure>

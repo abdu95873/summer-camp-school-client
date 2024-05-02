@@ -48,7 +48,7 @@ const ManageClasses = () => {
                 id: id
             })
         }
-        if (btn == 'feedback') {
+        if (btn === 'feedback') {
             event.preventDefault();
             const form = event.target;
             setBody({
@@ -91,9 +91,9 @@ const ManageClasses = () => {
                                     {item?.status == 'rejected' ? 'Rejected' : ''}
                                 </td>
                                 <td>
-                                    <button  className="btn btn-success btn-xs" onClick={() => handleStatus('approve', item._id, item.status, item.feedback)}disabled ={item.status === 'approved' || item.status === 'rejected' }>Approve</button> <br />
+                                    <button className="btn btn-success btn-xs" onClick={() => handleStatus('approve', item._id, item.status, item.feedback)} disabled={item.status === 'approved' || item.status === 'rejected'}>Approve</button> <br />
 
-                                    <button className="btn btn-error btn-xs w-full my-2" onClick={() => handleStatus('reject', item._id, item.status, item.feedback)}disabled ={item.status === 'approved' || item.status === 'rejected' }>Reject</button> <br />
+                                    <button className="btn btn-error btn-xs w-full my-2" onClick={() => handleStatus('reject', item._id, item.status, item.feedback)} disabled={item.status === 'approved' || item.status === 'rejected'}>Reject</button> <br />
                                     <button className="btn btn-info btn-xs" onClick={() => window[item._id].showModal()}>Feedback</button>
                                 </td>
                             </tr>

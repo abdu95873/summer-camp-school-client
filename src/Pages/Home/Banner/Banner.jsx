@@ -7,7 +7,7 @@ import img3 from '../../../assets/Banner/saxophone-music-gold-gloss-45243.jpeg'
 
 const Banner = () => {
     return (
-        <Carousel >
+        <Carousel  className="">
         <div >
             <img src={img1}/>
             

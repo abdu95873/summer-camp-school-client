@@ -12,9 +12,12 @@ const SignUp = () => {
 
 
     const { createUser, googleLogin } = useContext(AuthContext);
+
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
     const navigate = useNavigate();
     const location = useLocation();
+
     const from = location.state?.from?.pathname || "/";
 
 
@@ -47,9 +50,8 @@ const SignUp = () => {
             })
             .catch(error => console.log(error))
 
-
-
     };
+
 
     const handleGoogleLogin = () => {
         googleLogin()
@@ -95,7 +97,6 @@ const SignUp = () => {
                         }
                     })
                         .then(response => {
-                            console.log(response)
                             if (response.data.acknowledged) {
                                 Swal.fire({
                                     position: 'top-end',
@@ -122,6 +123,7 @@ const SignUp = () => {
                     
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 bg-opacity-40">
                         <form onSubmit={handleSubmit(handleSignUp)} className="card-body">
+                            
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Name</span>
@@ -193,6 +195,7 @@ const SignUp = () => {
                         </form>
                         <p className="text-center"><small>Already have an account <Link className='text-red-600' to="/login">Login</Link></small></p>
                         <div className="divider"></div>
+
                         <div className="flex justify-center items-center my-5 space-x-1">
                             <h5 className="">Login with ....   </h5>
 
